@@ -41,8 +41,8 @@ These two models are available in the [Hugging Face Space](https://huggingface.c
 
 1.  **Clone the repository:**
     ```bash
-    git clone <repository_url>
-    cd urban_planner
+    git clone https://github.com/4l3x4ndre/Metadata-Augmented-UNET-for-LST-NDVI
+    cd Metadata-Augmented-UNET-for-LST-NDVI
     ```
 
 2.  **Install dependencies:**
