@@ -1,0 +1,2 @@
+evaluation_csv_path,model_embedding_type,study_name,trial_id,model_architecture
+reports/tests/lgs-2c-future-fixed-eval_unet++_emb_4_job23682871_evaluation.csv,emb,lgs-2c-future-fixed-eval,4,unet++

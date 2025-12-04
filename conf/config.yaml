@@ -1,0 +1,62 @@
+project_name: "urban_green_planning"
+
+paths:
+  notebooks:
+    root: "../"
+    data: "../data/"
+    output_changes: "../data/output_changes"
+    output_changes_filtered: "../data/output_changes_filtered"
+    dataset: "../data/output_changes_filtered"
+
+dataset:
+  dataset_type: 'future' 
+  min_population: 50000
+  dynamic_world_green_px_values: [1, 2, 3, 4, 5]
+  image_shape_edge: 250
+
+  nb_images_per_cities: 11
+  nb_input_channels: 23
+  nb_metadata_features: 8
+  temporal_length: 828 
+  temporal_start_year: 1951
+  temporal_end_year: 2019
+
+  force_recompute_valid_cities: False
+  force_remcompute_stratification: False
+  force_recompute_metrics: True
+
+  input_channels: ['before_ghap', 'before_ndvi', 'before_temp', 'before_rgb', 'change_mask','before_dw', 'after_dw']
+  target_channels: ['after_ndvi', 'after_temp'] #NDVI FIRST AS TANH
+  
+  # Train/Test/Val % total acquired images
+  train_ratio: 0.7
+  test_ratio: 0.2
+  val_ratio: 0.1
+
+logging:
+  frequency_log: 200
+  frequency_plt: 1000
+
+training:
+  optimizer: "AdamW"
+  loss: 'l1-gradient-ssim' # 'mse-gradient'
+  epochs: 50
+  gradient_clipping: 0 # 0 for no clipping
+  batch_size: 16
+  dropout: 0.2
+  latent_dim: 128
+  learning_rate: 1e-4
+  lstm_hidden: 96
+  meta_dim: 64
+  temporal_dim: 64
+  weight_decay: 0.001
+
+
+model:
+  img_size: 512
+  generator_in: 16
+  generator_out: 3
+  discriminator_in: 19
+
+seed: 42
+seeds_cv: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
